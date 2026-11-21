@@ -1,20 +1,22 @@
 import pandas as pd
 
 def analizar_csv(nombre_archivo, ruta_archivo, umbral_potencia, umbral_snr, umbral_ber):
-    print(f"Abriendo {nombre_archivo} desde {ruta_archivo}")
     df = pd.read_csv(ruta_archivo)
+    df["timestamp"] = pd.to_datetime(df["timestamp"])
 
-    # Lista de enlaces únicos para cargar el combo_enlace
     enlaces = sorted(df["enlace"].astype(str).unique().tolist())
 
-    # Ejemplo de análisis contra los 3 umbrales
     problemas = []
     for enlace, grupo in df.groupby("enlace"):
-        if (grupo["potencia"] < umbral_potencia).any():
-            problemas.append(f"{enlace}: Potencia baja (< {umbral_potencia} dBm)")
-        if (grupo["snr"] < umbral_snr).any():
-            problemas.append(f"{enlace}: SNR bajo (< {umbral_snr} dB)")
-        if (grupo["ber"] > umbral_ber).any():
-            problemas.append(f"{enlace}: BER alta (> {umbral_ber})")
+        min_pot = grupo["potencia_dbm"].min()
+        min_snr = grupo["snr_db"].min()
+        max_ber = grupo["ber"].max()
+
+        if min_pot < umbral_potencia:
+            problemas.append(f"{enlace}: Potencia baja ({min_pot:.1f} dBm)")
+        if min_snr < umbral_snr:
+            problemas.append(f"{enlace}: SNR bajo ({min_snr:.1f} dB)")
+        if max_ber > umbral_ber:
+            problemas.append(f"{enlace}: BER alta ({max_ber:.1e})")
 
     return df, enlaces, problemas

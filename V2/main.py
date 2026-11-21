@@ -1,9 +1,10 @@
 import os
 import sys
 from PySide6.QtWidgets import QApplication, QFileDialog, QMainWindow
-from FrontEndPrograma import Ui_MainWindow  # Verificá que coincida con tu .py generado
+from FrontEndPrograma import Ui_MainWindow
 import main2
 from graficador import GraficadorEnlaces
+
 
 class VentanaPrincipal(QMainWindow):
     def __init__(self):
@@ -70,8 +71,22 @@ class VentanaPrincipal(QMainWindow):
         self.ui.combo_enlace.addItems(enlaces)
         self.ui.combo_enlace.blockSignals(False)
 
+        # Cargar el reporte en el cuadro INFORME con viñetas
+        if problemas:
+            items_html = "".join(f"<li>{p}</li>" for p in problemas)
+            html = f"""
+            <p style="margin:0 0 4px 0;"><b>Enlaces con problemas</b></p>
+            <ul style="margin:0; padding-left:18px;">
+                {items_html}
+            </ul>
+            """
+        else:
+            html = "<p><b>Sin problemas detectados</b><br>Todos los enlaces cumplen los umbrales.</p>"
+
+        self.ui.textEdit_informe.setHtml(html)
+
         self.ui.statusbar.showMessage(
-            f"Análisis completo ({self.nombre_csv}): {len(enlaces)} enlaces | {len(problemas)} alertas"
+            f"Análisis completo ({self.nombre_csv}): {len(enlaces)} enlaces procesados | {len(problemas)} alertas"
         )
         self.actualizar_graficas()
 
@@ -82,6 +97,7 @@ class VentanaPrincipal(QMainWindow):
         enlace = self.ui.combo_enlace.currentText()
         u_pot, u_snr, u_ber = self.leer_umbrales()
         self.graficador.graficar(self.df, enlace, u_pot, u_snr, u_ber)
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

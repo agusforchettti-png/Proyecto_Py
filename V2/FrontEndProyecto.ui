@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>936</width>
-    <height>629</height>
+    <width>932</width>
+    <height>614</height>
    </rect>
   </property>
   <property name="palette">
@@ -92,8 +92,8 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>10</y>
-      <width>421</width>
+      <y>0</y>
+      <width>371</width>
       <height>241</height>
      </rect>
     </property>
@@ -113,7 +113,7 @@
     <widget class="QLabel" name="label_7">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>30</x>
        <y>90</y>
        <width>221</width>
        <height>31</height>
@@ -242,7 +242,7 @@
     <widget class="QLabel" name="label_5">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>30</x>
        <y>140</y>
        <width>221</width>
        <height>31</height>
@@ -371,7 +371,7 @@
     <widget class="QTextEdit" name="textEdit_4">
      <property name="geometry">
       <rect>
-       <x>260</x>
+       <x>240</x>
        <y>40</y>
        <width>104</width>
        <height>31</height>
@@ -513,7 +513,7 @@ border-radius: 7px;</string>
     <widget class="QLabel" name="label_6">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>30</x>
        <y>40</y>
        <width>221</width>
        <height>31</height>
@@ -642,7 +642,7 @@ border-radius: 7px;</string>
     <widget class="QTextEdit" name="textEdit_3">
      <property name="geometry">
       <rect>
-       <x>260</x>
+       <x>240</x>
        <y>140</y>
        <width>104</width>
        <height>31</height>
@@ -784,7 +784,7 @@ border-radius: 7px;</string>
     <widget class="QTextEdit" name="textEdit_5">
      <property name="geometry">
       <rect>
-       <x>260</x>
+       <x>240</x>
        <y>90</y>
        <width>104</width>
        <height>31</height>
@@ -926,7 +926,7 @@ border-radius: 7px;</string>
     <widget class="QPushButton" name="pushbutton_actualizar">
      <property name="geometry">
       <rect>
-       <x>90</x>
+       <x>50</x>
        <y>200</y>
        <width>241</width>
        <height>24</height>
@@ -1163,7 +1163,7 @@ background-color: #1a365d;
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>401</width>
+       <width>351</width>
        <height>21</height>
       </rect>
      </property>
@@ -1185,8 +1185,8 @@ background-color: #A9A9B0;</string>
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>250</y>
-      <width>421</width>
+      <y>240</y>
+      <width>371</width>
       <height>81</height>
      </rect>
     </property>
@@ -1208,7 +1208,7 @@ background-color: #A9A9B0;</string>
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>401</width>
+       <width>351</width>
        <height>21</height>
       </rect>
      </property>
@@ -1228,7 +1228,7 @@ background-color: #A9A9B0;</string>
     <widget class="QComboBox" name="combo_enlace">
      <property name="geometry">
       <rect>
-       <x>70</x>
+       <x>40</x>
        <y>40</y>
        <width>291</width>
        <height>24</height>
@@ -1253,9 +1253,9 @@ background-color: #909099;
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>330</y>
-      <width>421</width>
-      <height>141</height>
+      <y>320</y>
+      <width>371</width>
+      <height>251</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -1276,7 +1276,7 @@ background-color: #909099;
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>401</width>
+       <width>351</width>
        <height>21</height>
       </rect>
      </property>
@@ -1293,14 +1293,35 @@ background-color: #A9A9B0;</string>
       <set>Qt::AlignmentFlag::AlignCenter</set>
      </property>
     </widget>
+    <widget class="QTextEdit" name="textEdit_informe">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>351</width>
+       <height>211</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #ffffff;
+color: #1a202c;
+border: 1px solid #cbd5e0;
+border-radius: 5px;
+padding: 4px;
+font-size: 11px;</string>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
    </widget>
    <widget class="QFrame" name="frame_parametros_3">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>10</y>
-      <width>421</width>
-      <height>161</height>
+      <x>370</x>
+      <y>0</y>
+      <width>561</width>
+      <height>191</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -1321,7 +1342,7 @@ background-color: #A9A9B0;</string>
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>401</width>
+       <width>541</width>
        <height>21</height>
       </rect>
      </property>
@@ -1342,36 +1363,23 @@ background-color: #A9A9B0;</string>
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>40</y>
-       <width>401</width>
-       <height>111</height>
+       <y>30</y>
+       <width>541</width>
+       <height>151</height>
       </rect>
      </property>
      <property name="styleSheet">
       <string notr="true">background-color: #ffffff;</string>
      </property>
-     <widget class="QWidget" name="widget_2" native="true">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>401</width>
-        <height>111</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: #ffffff;</string>
-      </property>
-     </widget>
     </widget>
    </widget>
    <widget class="QFrame" name="frame_parametros_6">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>170</y>
-      <width>421</width>
-      <height>161</height>
+      <x>370</x>
+      <y>190</y>
+      <width>561</width>
+      <height>181</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -1392,7 +1400,7 @@ background-color: #A9A9B0;</string>
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>401</width>
+       <width>541</width>
        <height>21</height>
       </rect>
      </property>
@@ -1413,9 +1421,9 @@ background-color: #A9A9B0;</string>
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>40</y>
-       <width>401</width>
-       <height>111</height>
+       <y>30</y>
+       <width>541</width>
+       <height>141</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -1426,10 +1434,10 @@ background-color: #A9A9B0;</string>
    <widget class="QFrame" name="frame_parametros_7">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>330</y>
-      <width>421</width>
-      <height>161</height>
+      <x>370</x>
+      <y>370</y>
+      <width>561</width>
+      <height>201</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -1450,7 +1458,7 @@ background-color: #A9A9B0;</string>
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>401</width>
+       <width>541</width>
        <height>21</height>
       </rect>
      </property>
@@ -1471,9 +1479,9 @@ background-color: #A9A9B0;</string>
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>40</y>
-       <width>401</width>
-       <height>111</height>
+       <y>30</y>
+       <width>541</width>
+       <height>161</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -1487,7 +1495,7 @@ background-color: #A9A9B0;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>936</width>
+     <width>932</width>
      <height>21</height>
     </rect>
    </property>

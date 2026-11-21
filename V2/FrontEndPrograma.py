@@ -26,7 +26,7 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.setEnabled(True)
-        MainWindow.resize(936, 629)
+        MainWindow.resize(932, 614)
         palette = QPalette()
         brush = QBrush(QColor(255, 255, 255, 255))
         brush.setStyle(Qt.BrushStyle.SolidPattern)
@@ -56,7 +56,7 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.frame_parametros = QFrame(self.centralwidget)
         self.frame_parametros.setObjectName(u"frame_parametros")
-        self.frame_parametros.setGeometry(QRect(0, 10, 421, 241))
+        self.frame_parametros.setGeometry(QRect(0, 0, 371, 241))
         self.frame_parametros.setStyleSheet(u"#frame_parametros {\n"
 "    background-color: #B9B9BD;\n"
 "    border: 1.5px solid #4a76a8;\n"
@@ -66,7 +66,7 @@ class Ui_MainWindow(object):
         self.frame_parametros.setFrameShadow(QFrame.Shadow.Raised)
         self.label_7 = QLabel(self.frame_parametros)
         self.label_7.setObjectName(u"label_7")
-        self.label_7.setGeometry(QRect(20, 90, 221, 31))
+        self.label_7.setGeometry(QRect(30, 90, 221, 31))
         palette1 = QPalette()
         brush1 = QBrush(QColor(0, 0, 0, 255))
         brush1.setStyle(Qt.BrushStyle.SolidPattern)
@@ -91,7 +91,7 @@ class Ui_MainWindow(object):
         self.label_7.setFont(font1)
         self.label_5 = QLabel(self.frame_parametros)
         self.label_5.setObjectName(u"label_5")
-        self.label_5.setGeometry(QRect(20, 140, 221, 31))
+        self.label_5.setGeometry(QRect(30, 140, 221, 31))
         palette2 = QPalette()
         palette2.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.WindowText, brush1)
         palette2.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Button, brush2)
@@ -108,7 +108,7 @@ class Ui_MainWindow(object):
         self.label_5.setFont(font1)
         self.textEdit_4 = QTextEdit(self.frame_parametros)
         self.textEdit_4.setObjectName(u"textEdit_4")
-        self.textEdit_4.setGeometry(QRect(260, 40, 104, 31))
+        self.textEdit_4.setGeometry(QRect(240, 40, 104, 31))
         palette3 = QPalette()
         palette3.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Button, brush2)
         palette3.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Text, brush1)
@@ -131,7 +131,7 @@ class Ui_MainWindow(object):
 "border-radius: 7px;")
         self.label_6 = QLabel(self.frame_parametros)
         self.label_6.setObjectName(u"label_6")
-        self.label_6.setGeometry(QRect(20, 40, 221, 31))
+        self.label_6.setGeometry(QRect(30, 40, 221, 31))
         palette4 = QPalette()
         palette4.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.WindowText, brush1)
         palette4.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Button, brush2)
@@ -148,7 +148,7 @@ class Ui_MainWindow(object):
         self.label_6.setFont(font1)
         self.textEdit_3 = QTextEdit(self.frame_parametros)
         self.textEdit_3.setObjectName(u"textEdit_3")
-        self.textEdit_3.setGeometry(QRect(260, 140, 104, 31))
+        self.textEdit_3.setGeometry(QRect(240, 140, 104, 31))
         palette5 = QPalette()
         palette5.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Button, brush2)
         palette5.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Text, brush1)
@@ -169,7 +169,7 @@ class Ui_MainWindow(object):
 "border-radius: 7px;")
         self.textEdit_5 = QTextEdit(self.frame_parametros)
         self.textEdit_5.setObjectName(u"textEdit_5")
-        self.textEdit_5.setGeometry(QRect(260, 90, 104, 31))
+        self.textEdit_5.setGeometry(QRect(240, 90, 104, 31))
         palette6 = QPalette()
         palette6.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Button, brush2)
         palette6.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Text, brush1)
@@ -190,7 +190,7 @@ class Ui_MainWindow(object):
 "border-radius: 7px;")
         self.pushbutton_actualizar = QPushButton(self.frame_parametros)
         self.pushbutton_actualizar.setObjectName(u"pushbutton_actualizar")
-        self.pushbutton_actualizar.setGeometry(QRect(90, 200, 241, 24))
+        self.pushbutton_actualizar.setGeometry(QRect(50, 200, 241, 24))
         palette7 = QPalette()
         palette7.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.WindowText, brush1)
         brush4 = QBrush(QColor(74, 118, 168, 255))
@@ -245,7 +245,7 @@ class Ui_MainWindow(object):
 "}")
         self.label_parametros = QLabel(self.frame_parametros)
         self.label_parametros.setObjectName(u"label_parametros")
-        self.label_parametros.setGeometry(QRect(10, 10, 401, 21))
+        self.label_parametros.setGeometry(QRect(10, 10, 351, 21))
         self.label_parametros.setStyleSheet(u"color: #3D57AD;\n"
 "font-weight: bold;\n"
 "border: 1.5px solid #B9B9BD;\n"
@@ -253,7 +253,7 @@ class Ui_MainWindow(object):
         self.label_parametros.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.frame_enlace = QFrame(self.centralwidget)
         self.frame_enlace.setObjectName(u"frame_enlace")
-        self.frame_enlace.setGeometry(QRect(0, 250, 421, 81))
+        self.frame_enlace.setGeometry(QRect(0, 240, 371, 81))
         self.frame_enlace.setStyleSheet(u"#frame_enlace {\n"
 "    background-color: #B9B9BD;\n"
 "    border: 1.5px solid #4a76a8;\n"
@@ -263,7 +263,7 @@ class Ui_MainWindow(object):
         self.frame_enlace.setFrameShadow(QFrame.Shadow.Raised)
         self.label_enlace = QLabel(self.frame_enlace)
         self.label_enlace.setObjectName(u"label_enlace")
-        self.label_enlace.setGeometry(QRect(10, 10, 401, 21))
+        self.label_enlace.setGeometry(QRect(10, 10, 351, 21))
         self.label_enlace.setStyleSheet(u"color: #3D57AD;\n"
 "font-weight: bold;\n"
 "border: 1.5px solid #B9B9BD;\n"
@@ -271,7 +271,7 @@ class Ui_MainWindow(object):
         self.label_enlace.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.combo_enlace = QComboBox(self.frame_enlace)
         self.combo_enlace.setObjectName(u"combo_enlace")
-        self.combo_enlace.setGeometry(QRect(70, 40, 291, 24))
+        self.combo_enlace.setGeometry(QRect(40, 40, 291, 24))
         self.combo_enlace.setStyleSheet(u"QComboBox {\n"
 "background-color: #A9A9B0;\n"
 "}\n"
@@ -283,7 +283,7 @@ class Ui_MainWindow(object):
         self.combo_enlace.setEditable(True)
         self.frame_parametros_2 = QFrame(self.centralwidget)
         self.frame_parametros_2.setObjectName(u"frame_parametros_2")
-        self.frame_parametros_2.setGeometry(QRect(0, 330, 421, 141))
+        self.frame_parametros_2.setGeometry(QRect(0, 320, 371, 251))
         self.frame_parametros_2.setStyleSheet(u"#frame_parametros_2 {\n"
 "    background-color: #B9B9BD;\n"
 "    border: 1.5px solid #4a76a8;\n"
@@ -293,15 +293,25 @@ class Ui_MainWindow(object):
         self.frame_parametros_2.setFrameShadow(QFrame.Shadow.Raised)
         self.label_parametros_3 = QLabel(self.frame_parametros_2)
         self.label_parametros_3.setObjectName(u"label_parametros_3")
-        self.label_parametros_3.setGeometry(QRect(10, 10, 401, 21))
+        self.label_parametros_3.setGeometry(QRect(10, 10, 351, 21))
         self.label_parametros_3.setStyleSheet(u"color: #3D57AD;\n"
 "font-weight: bold;\n"
 "border: 1.5px solid #B9B9BD;\n"
 "background-color: #A9A9B0;")
         self.label_parametros_3.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.textEdit_informe = QTextEdit(self.frame_parametros_2)
+        self.textEdit_informe.setObjectName(u"textEdit_informe")
+        self.textEdit_informe.setGeometry(QRect(10, 30, 351, 211))
+        self.textEdit_informe.setStyleSheet(u"background-color: #ffffff;\n"
+"color: #1a202c;\n"
+"border: 1px solid #cbd5e0;\n"
+"border-radius: 5px;\n"
+"padding: 4px;\n"
+"font-size: 11px;")
+        self.textEdit_informe.setReadOnly(True)
         self.frame_parametros_3 = QFrame(self.centralwidget)
         self.frame_parametros_3.setObjectName(u"frame_parametros_3")
-        self.frame_parametros_3.setGeometry(QRect(420, 10, 421, 161))
+        self.frame_parametros_3.setGeometry(QRect(370, 0, 561, 191))
         self.frame_parametros_3.setStyleSheet(u"#frame_parametros_3 {\n"
 "    background-color: #B9B9BD;\n"
 "    border: 1.5px solid #4a76a8;\n"
@@ -311,7 +321,7 @@ class Ui_MainWindow(object):
         self.frame_parametros_3.setFrameShadow(QFrame.Shadow.Raised)
         self.label_parametros_4 = QLabel(self.frame_parametros_3)
         self.label_parametros_4.setObjectName(u"label_parametros_4")
-        self.label_parametros_4.setGeometry(QRect(10, 10, 401, 21))
+        self.label_parametros_4.setGeometry(QRect(10, 10, 541, 21))
         self.label_parametros_4.setStyleSheet(u"color: #3D57AD;\n"
 "font-weight: bold;\n"
 "border: 1.5px solid #B9B9BD;\n"
@@ -319,15 +329,11 @@ class Ui_MainWindow(object):
         self.label_parametros_4.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.widget = QWidget(self.frame_parametros_3)
         self.widget.setObjectName(u"widget")
-        self.widget.setGeometry(QRect(10, 40, 401, 111))
+        self.widget.setGeometry(QRect(10, 30, 541, 151))
         self.widget.setStyleSheet(u"background-color: #ffffff;")
-        self.widget_2 = QWidget(self.widget)
-        self.widget_2.setObjectName(u"widget_2")
-        self.widget_2.setGeometry(QRect(0, 0, 401, 111))
-        self.widget_2.setStyleSheet(u"background-color: #ffffff;")
         self.frame_parametros_6 = QFrame(self.centralwidget)
         self.frame_parametros_6.setObjectName(u"frame_parametros_6")
-        self.frame_parametros_6.setGeometry(QRect(420, 170, 421, 161))
+        self.frame_parametros_6.setGeometry(QRect(370, 190, 561, 181))
         self.frame_parametros_6.setStyleSheet(u"#frame_parametros_6 {\n"
 "    background-color: #B9B9BD;\n"
 "    border: 1.5px solid #4a76a8;\n"
@@ -337,7 +343,7 @@ class Ui_MainWindow(object):
         self.frame_parametros_6.setFrameShadow(QFrame.Shadow.Raised)
         self.label_parametros_7 = QLabel(self.frame_parametros_6)
         self.label_parametros_7.setObjectName(u"label_parametros_7")
-        self.label_parametros_7.setGeometry(QRect(10, 10, 401, 21))
+        self.label_parametros_7.setGeometry(QRect(10, 10, 541, 21))
         self.label_parametros_7.setStyleSheet(u"color: #3D57AD;\n"
 "font-weight: bold;\n"
 "border: 1.5px solid #B9B9BD;\n"
@@ -345,11 +351,11 @@ class Ui_MainWindow(object):
         self.label_parametros_7.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.widget_3 = QWidget(self.frame_parametros_6)
         self.widget_3.setObjectName(u"widget_3")
-        self.widget_3.setGeometry(QRect(10, 40, 401, 111))
+        self.widget_3.setGeometry(QRect(10, 30, 541, 141))
         self.widget_3.setStyleSheet(u"background-color: #ffffff;")
         self.frame_parametros_7 = QFrame(self.centralwidget)
         self.frame_parametros_7.setObjectName(u"frame_parametros_7")
-        self.frame_parametros_7.setGeometry(QRect(420, 330, 421, 161))
+        self.frame_parametros_7.setGeometry(QRect(370, 370, 561, 201))
         self.frame_parametros_7.setStyleSheet(u"#frame_parametros_7{\n"
 "    background-color: #B9B9BD;\n"
 "    border: 1.5px solid #4a76a8;\n"
@@ -359,7 +365,7 @@ class Ui_MainWindow(object):
         self.frame_parametros_7.setFrameShadow(QFrame.Shadow.Raised)
         self.label_parametros_8 = QLabel(self.frame_parametros_7)
         self.label_parametros_8.setObjectName(u"label_parametros_8")
-        self.label_parametros_8.setGeometry(QRect(10, 10, 401, 21))
+        self.label_parametros_8.setGeometry(QRect(10, 10, 541, 21))
         self.label_parametros_8.setStyleSheet(u"color: #3D57AD;\n"
 "font-weight: bold;\n"
 "border: 1.5px solid #B9B9BD;\n"
@@ -367,12 +373,12 @@ class Ui_MainWindow(object):
         self.label_parametros_8.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.widget_4 = QWidget(self.frame_parametros_7)
         self.widget_4.setObjectName(u"widget_4")
-        self.widget_4.setGeometry(QRect(10, 40, 401, 111))
+        self.widget_4.setGeometry(QRect(10, 30, 541, 161))
         self.widget_4.setStyleSheet(u"background-color: #ffffff;")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 936, 21))
+        self.menubar.setGeometry(QRect(0, 0, 932, 21))
         self.menubar.setStyleSheet(u"QMenuBar {\n"
 "background-color: #ffffff;\n"
 "}\n"

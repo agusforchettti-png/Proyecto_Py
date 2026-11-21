@@ -25,32 +25,35 @@ class GraficadorEnlaces:
         if datos.empty:
             return
 
-        x = range(len(datos))
+        x = datos["timestamp"]
 
         # 1. Gráfica de Potencia
         self.ax_pot.clear()
-        self.ax_pot.plot(x, datos["potencia"], color="#1e3a8a", label="Potencia (RSSI)")
+        self.ax_pot.plot(x, datos["potencia_dbm"], color="#1e3a8a", label="Potencia (RSSI)")
         self.ax_pot.axhline(umbral_potencia, color="gray", linestyle="--", label="Umbral")
         self.ax_pot.set_ylabel("dBm")
+        self.ax_pot.tick_params(axis="x", labelsize=7)
         self.ax_pot.legend(loc="lower left", fontsize=8)
         self.canvas_pot.figure.tight_layout()
         self.canvas_pot.draw()
 
         # 2. Gráfica de SNR
         self.ax_snr.clear()
-        self.ax_snr.plot(x, datos["snr"], color="#3b82f6", label="SNR")
+        self.ax_snr.plot(x, datos["snr_db"], color="#3b82f6", label="SNR")
         self.ax_snr.axhline(umbral_snr, color="gray", linestyle="--", label="Umbral")
         self.ax_snr.set_ylabel("dB")
+        self.ax_snr.tick_params(axis="x", labelsize=7)
         self.ax_snr.legend(loc="lower left", fontsize=8)
         self.canvas_snr.figure.tight_layout()
         self.canvas_snr.draw()
 
-        # 3. Gráfica de BER (escala logarítmica)
+        # 3. Gráfica de BER
         self.ax_ber.clear()
         self.ax_ber.plot(x, datos["ber"], color="#9333ea", label="BER")
         self.ax_ber.axhline(umbral_ber, color="gray", linestyle="--", label="Umbral")
         self.ax_ber.set_yscale("log")
         self.ax_ber.set_ylabel("BER")
+        self.ax_ber.tick_params(axis="x", labelsize=7)
         self.ax_ber.legend(loc="lower left", fontsize=8)
         self.canvas_ber.figure.tight_layout()
         self.canvas_ber.draw()
