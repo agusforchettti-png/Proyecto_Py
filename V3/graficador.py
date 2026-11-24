@@ -1,13 +1,16 @@
 from PySide6.QtWidgets import QVBoxLayout
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
-
+import matplotlib.dates as mdates
 
 class GraficadorEnlaces:
     def __init__(self, cont_potencia, cont_snr, cont_ber):
         self.ax_pot, self.canvas_pot = self._crear_canvas(cont_potencia)
         self.ax_snr, self.canvas_snr = self._crear_canvas(cont_snr)
         self.ax_ber, self.canvas_ber = self._crear_canvas(cont_ber)
+        self.canvas_pot.setVisible(False)
+        self.canvas_snr.setVisible(False)
+        self.canvas_ber.setVisible(False)
 
     def _crear_canvas(self, contenedor):
         if contenedor.layout() is None:
@@ -20,14 +23,17 @@ class GraficadorEnlaces:
         contenedor.layout().addWidget(canvas)
         return ax, canvas
 
-    def _estilizar_eje(self, ax, canvas, ylabel, escala_log=False):
+    def _estilizar_eje(self, ax, canvas, ylabel, escala_log=False,labelsize_y=7):
         """
         Define como va a ser el aspecto de los ejes de las 3 graficas
         """
+        ax.xaxis.set_major_formatter(mdates.DateFormatter("%d - %H:%M"))
+        ax.xaxis.set_major_locator(mdates.HourLocator(interval=12))  # Una marca cada 12 hs para que no se encimen
         if escala_log:
             ax.set_yscale("log")
         ax.set_ylabel(ylabel, fontsize=8)
         ax.tick_params(axis="both", labelsize=7)  # Achica números de X e Y
+        ax.tick_params(axis="y", which="both", labelsize=labelsize_y)
         ax.margins(x=0)                           # Sin espacios vacíos a los lados
         ax.grid(True, linestyle=":", alpha=0.5)
         ax.legend(loc="lower left", fontsize=7)
@@ -41,7 +47,9 @@ class GraficadorEnlaces:
         datos = df[df["enlace"].astype(str) == str(enlace)]
         if datos.empty:
             return
-
+        self.canvas_pot.setVisible(True)
+        self.canvas_snr.setVisible(True)
+        self.canvas_ber.setVisible(True)
         x = datos["timestamp"]
 
         # 1. Gráfica de Potencia
@@ -69,4 +77,4 @@ class GraficadorEnlaces:
             self.ax_ber.axhline(umbrales[4], color="red", linestyle="--", linewidth=1, label="Umbral")
         if validos[5]:
             self.ax_ber.axhline(umbrales[5], color="red", linestyle="--", linewidth=1, label="Umbral")
-        self._estilizar_eje(self.ax_ber, self.canvas_ber, "BER", escala_log=True)
+        self._estilizar_eje(self.ax_ber, self.canvas_ber, "BER", escala_log=True, labelsize_y=6)

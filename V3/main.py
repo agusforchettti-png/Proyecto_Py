@@ -48,7 +48,7 @@ class VentanaPrincipal(QMainWindow):
         validos = []
 
         for w in widgets:
-            texto = w.toPlainText().strip()
+            texto = w.text().strip()
             if texto:
                 umbrales.append(float(texto))
                 validos.append(True)
