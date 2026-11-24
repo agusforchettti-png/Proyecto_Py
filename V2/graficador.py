@@ -2,6 +2,7 @@ from PySide6.QtWidgets import QVBoxLayout
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 
+
 class GraficadorEnlaces:
     def __init__(self, cont_potencia, cont_snr, cont_ber):
         self.ax_pot, self.canvas_pot = self._crear_canvas(cont_potencia)
@@ -9,7 +10,6 @@ class GraficadorEnlaces:
         self.ax_ber, self.canvas_ber = self._crear_canvas(cont_ber)
 
     def _crear_canvas(self, contenedor):
-        # Si el QWidget del .ui no tiene layout asignado, se lo creamos acá
         if contenedor.layout() is None:
             layout = QVBoxLayout(contenedor)
             layout.setContentsMargins(0, 0, 0, 0)
@@ -20,7 +20,24 @@ class GraficadorEnlaces:
         contenedor.layout().addWidget(canvas)
         return ax, canvas
 
-    def graficar(self, df, enlace, umbral_potencia, umbral_snr, umbral_ber):
+    def _estilizar_eje(self, ax, canvas, ylabel, escala_log=False):
+        """
+        Define como va a ser el aspecto de los ejes de las 3 graficas
+        """
+        if escala_log:
+            ax.set_yscale("log")
+        ax.set_ylabel(ylabel, fontsize=8)
+        ax.tick_params(axis="both", labelsize=7)  # Achica números de X e Y
+        ax.margins(x=0)                           # Sin espacios vacíos a los lados
+        ax.grid(True, linestyle=":", alpha=0.5)
+        ax.legend(loc="lower left", fontsize=7)
+        canvas.figure.tight_layout(pad=0.3)       # Reduce bordes externos para agrandar el cuadro
+        canvas.draw()
+
+    def graficar(self, df, enlace, umbral_potencia, umbral_snr, umbral_ber,pot_valida,snr_valida,ber_valida):
+        """
+        Define el aspecto de las tres graficas y sus umbrales
+        """
         datos = df[df["enlace"].astype(str) == str(enlace)]
         if datos.empty:
             return
@@ -29,31 +46,21 @@ class GraficadorEnlaces:
 
         # 1. Gráfica de Potencia
         self.ax_pot.clear()
-        self.ax_pot.plot(x, datos["potencia_dbm"], color="#1e3a8a", label="Potencia (RSSI)")
-        self.ax_pot.axhline(umbral_potencia, color="gray", linestyle="--", label="Umbral")
-        self.ax_pot.set_ylabel("dBm")
-        self.ax_pot.tick_params(axis="x", labelsize=7)
-        self.ax_pot.legend(loc="lower left", fontsize=8)
-        self.canvas_pot.figure.tight_layout()
-        self.canvas_pot.draw()
+        self.ax_pot.plot(x, datos["potencia_dbm"], color="#1e3a8a", linewidth=1.3, label="Potencia (RSSI)")
+        if pot_valida:
+            self.ax_pot.axhline(umbral_potencia, color="red", linestyle="--", linewidth=1, label="Umbral")
+        self._estilizar_eje(self.ax_pot, self.canvas_pot, "dBm")
 
         # 2. Gráfica de SNR
         self.ax_snr.clear()
-        self.ax_snr.plot(x, datos["snr_db"], color="#3b82f6", label="SNR")
-        self.ax_snr.axhline(umbral_snr, color="gray", linestyle="--", label="Umbral")
-        self.ax_snr.set_ylabel("dB")
-        self.ax_snr.tick_params(axis="x", labelsize=7)
-        self.ax_snr.legend(loc="lower left", fontsize=8)
-        self.canvas_snr.figure.tight_layout()
-        self.canvas_snr.draw()
+        self.ax_snr.plot(x, datos["snr_db"], color="#3b82f6", linewidth=1.3, label="SNR")
+        if snr_valida:
+            self.ax_snr.axhline(umbral_snr, color="red", linestyle="--", linewidth=1, label="Umbral")
+        self._estilizar_eje(self.ax_snr, self.canvas_snr, "dB")
 
         # 3. Gráfica de BER
         self.ax_ber.clear()
-        self.ax_ber.plot(x, datos["ber"], color="#9333ea", label="BER")
-        self.ax_ber.axhline(umbral_ber, color="gray", linestyle="--", label="Umbral")
-        self.ax_ber.set_yscale("log")
-        self.ax_ber.set_ylabel("BER")
-        self.ax_ber.tick_params(axis="x", labelsize=7)
-        self.ax_ber.legend(loc="lower left", fontsize=8)
-        self.canvas_ber.figure.tight_layout()
-        self.canvas_ber.draw()
+        self.ax_ber.plot(x, datos["ber"], color="#9333ea", linewidth=1.3, label="BER")
+        if ber_valida:
+            self.ax_ber.axhline(umbral_ber, color="red", linestyle="--", linewidth=1, label="Umbral")
+        self._estilizar_eje(self.ax_ber, self.canvas_ber, "BER", escala_log=True)

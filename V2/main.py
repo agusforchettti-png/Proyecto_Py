@@ -1,3 +1,4 @@
+# pylint: disable=no-member
 import os
 import sys
 from PySide6.QtWidgets import QApplication, QFileDialog, QMainWindow
@@ -7,7 +8,11 @@ from graficador import GraficadorEnlaces
 
 
 class VentanaPrincipal(QMainWindow):
+
     def __init__(self):
+        """
+        Inicializa el FrontEnd mediante Pyside y establece los valores por defecto de variables
+        """
         super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
@@ -30,16 +35,25 @@ class VentanaPrincipal(QMainWindow):
         self.ui.combo_enlace.currentTextChanged.connect(self.actualizar_graficas)
 
     def leer_umbrales(self):
-        def a_float(widget, defecto):
-            texto = widget.toPlainText().strip()
-            return float(texto) if texto else defecto
+        t_pot = self.ui.textEdit_4.toPlainText().strip()
+        t_snr = self.ui.textEdit_5.toPlainText().strip()
+        t_ber = self.ui.textEdit_3.toPlainText().strip()
 
-        u_pot = a_float(self.ui.textEdit_4, -80.0)
-        u_snr = a_float(self.ui.textEdit_5, 10.0)
-        u_ber = a_float(self.ui.textEdit_3, 1e-4)
-        return u_pot, u_snr, u_ber
+        pot_valida = bool(t_pot)
+        snr_valida = bool(t_snr)
+        ber_valida = bool(t_ber)
+
+        u_pot = float(t_pot) if pot_valida else None
+        u_snr = float(t_snr) if snr_valida else None
+        u_ber = float(t_ber) if ber_valida else None
+
+        return u_pot, u_snr, u_ber, pot_valida, snr_valida, ber_valida
 
     def abrir_csv(self):
+        """
+        Abre el Archivo .csv al desplegar una ventana de busqueda para archivos
+        facilitando la busqueda ya que el usuario no debe ingresar la ruta del archivo
+        """
         ruta, _ = QFileDialog.getOpenFileName(
             self,
             "Abrir archivo CSV",
@@ -51,18 +65,23 @@ class VentanaPrincipal(QMainWindow):
 
         self.ruta_csv = ruta
         self.nombre_csv = os.path.basename(ruta)
+        self.ui.label_nombre_archivo.setText(self.nombre_csv)
         self.ejecutar_analisis()
 
     def ejecutar_analisis(self):
+        """
+        Analiza los datos del archivo seleccionado y de no haber un 
+        archivo CSV seleccionado muestra un aviso
+        """
         if not self.ruta_csv:
             self.ui.statusbar.showMessage("Primero abrí un archivo CSV desde Archivo -> Abrir CSV")
             return
 
-        u_pot, u_snr, u_ber = self.leer_umbrales()
+        u_pot, u_snr, u_ber, pot_valida, snr_valida, ber_valida = self.leer_umbrales()
 
         # Enviar nombre, ruta y los 3 umbrales a main2.py
         self.df, enlaces, problemas = main2.analizar_csv(
-            self.nombre_csv, self.ruta_csv, u_pot, u_snr, u_ber
+            self.nombre_csv, self.ruta_csv, u_pot, u_snr, u_ber,pot_valida,snr_valida,ber_valida,
         )
 
         # Cargar combo_enlace sin disparar doble actualización
@@ -91,12 +110,17 @@ class VentanaPrincipal(QMainWindow):
         self.actualizar_graficas()
 
     def actualizar_graficas(self):
+        """
+        Ajusta los valores de las 3 graficas del proyecto mostrando el 
+        cambio de las 3 dichas variables del archivo respecto al tiempo en el
+        que se tomaron
+        """
         if self.df is None or self.ui.combo_enlace.count() == 0:
             return
 
         enlace = self.ui.combo_enlace.currentText()
-        u_pot, u_snr, u_ber = self.leer_umbrales()
-        self.graficador.graficar(self.df, enlace, u_pot, u_snr, u_ber)
+        u_pot, u_snr, u_ber, pot_valida, snr_valida, ber_valida = self.leer_umbrales()
+        self.graficador.graficar(self.df, enlace, u_pot, u_snr, u_ber,pot_valida,snr_valida,ber_valida)
 
 
 if __name__ == "__main__":
