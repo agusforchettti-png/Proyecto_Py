@@ -3,7 +3,7 @@ import os
 import sys
 from PySide6.QtWidgets import QApplication, QFileDialog, QMainWindow
 from FrontEndPrograma import Ui_MainWindow
-import main2
+import informe
 from graficador import GraficadorEnlaces
 
 
@@ -87,7 +87,7 @@ class VentanaPrincipal(QMainWindow):
             return
 
         umbrales, validos = self.leer_umbrales()
-        self.df, enlaces, problemas = main2.analizar_csv(
+        self.df, enlaces, problemas = informe.analizar_csv(
             self.nombre_csv, self.ruta_csv, umbrales, validos
         )
 
