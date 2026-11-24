@@ -94,13 +94,15 @@ class VentanaPrincipal(QMainWindow):
         if problemas:
             items_html = "".join(f"<li>{p}</li>" for p in problemas)
             html = f"""
-            <p style="margin:0 0 4px 0;"><b>Enlaces con problemas</b></p>
-            <ul style="margin:0; padding-left:18px;">
-                {items_html}
-            </ul>
+            <div style="font-size: 14px;">
+                <p style="margin:0 0 4px 0;"><b>Enlaces con problemas</b></p>
+                <ul style="margin:0; padding-left:18px;">
+                    {items_html}
+                </ul>
+            </div>
             """
         else:
-            html = "<p><b>Sin problemas detectados</b><br>Todos los enlaces cumplen los umbrales.</p>"
+            html = '<div style="font-size: 14px;"><b>Sin problemas detectados</b><br>Todos los enlaces cumplen los umbrales.</div>'
 
         self.ui.textEdit_informe.setHtml(html)
 
