@@ -23,9 +23,7 @@ class VentanaPrincipal(QMainWindow):
 
         # Inicializar las 3 gráficas en los QWidget del .ui
         self.graficador = GraficadorEnlaces(
-            self.ui.widget,
-            self.ui.widget_3,
-            self.ui.widget_4
+            self.ui.widget, self.ui.widget_3, self.ui.widget_4
         )
 
         # Conectar menú, botón ACTUALIZAR y selector de enlace
@@ -57,7 +55,7 @@ class VentanaPrincipal(QMainWindow):
                 validos.append(False)
 
         return umbrales, validos
-    
+
     def abrir_csv(self):
         """
         Abre el Archivo .csv al desplegar una ventana de busqueda para archivos
@@ -67,7 +65,7 @@ class VentanaPrincipal(QMainWindow):
             self,
             "Abrir archivo CSV",
             "",
-            "Archivos CSV (*.csv);;Todos los archivos (*)"
+            "Archivos CSV (*.csv);;Todos los archivos (*)",
         )
         if not ruta:
             return
@@ -79,11 +77,13 @@ class VentanaPrincipal(QMainWindow):
 
     def ejecutar_analisis(self):
         """
-        Analiza los datos del archivo seleccionado y de no haber un 
+        Analiza los datos del archivo seleccionado y de no haber un
         archivo CSV seleccionado muestra un aviso
         """
         if not self.ruta_csv:
-            self.ui.statusbar.showMessage("Primero abrí un archivo CSV desde Archivo -> Abrir CSV")
+            self.ui.statusbar.showMessage(
+                "Primero abrí un archivo CSV desde Archivo -> Abrir CSV"
+            )
             return
 
         umbrales, validos = self.leer_umbrales()
@@ -96,7 +96,7 @@ class VentanaPrincipal(QMainWindow):
         self.ui.combo_enlace.clear()
         for enlace in enlaces:
             num = int(enlace[1:]) if enlace[1:].isdigit() else enlace
-            texto = f"{enlace} - Enlace {num}"   # Ej: "E01 - Enlace 1"
+            texto = f"{enlace} - Enlace {num}"  # Ej: "E01 - Enlace 1"
             # Si preferís "EN1 - Enlace 1", usá: texto = f"EN{num} - Enlace {num}"
             self.ui.combo_enlace.addItem(texto, enlace)  # Muestra texto, guarda "E01"
         self.ui.combo_enlace.blockSignals(False)
@@ -124,7 +124,7 @@ class VentanaPrincipal(QMainWindow):
 
     def actualizar_graficas(self):
         """
-        Ajusta los valores de las 3 graficas del proyecto mostrando el 
+        Ajusta los valores de las 3 graficas del proyecto mostrando el
         cambio de las 3 dichas variables del archivo respecto al tiempo en el
         que se tomaron
         """
@@ -133,7 +133,7 @@ class VentanaPrincipal(QMainWindow):
 
         enlace = self.ui.combo_enlace.currentData()
         umbrales, validos = self.leer_umbrales()
-        self.graficador.graficar(self.df, enlace,umbrales, validos)
+        self.graficador.graficar(self.df, enlace, umbrales, validos)
 
 
 if __name__ == "__main__":

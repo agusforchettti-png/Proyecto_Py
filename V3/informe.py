@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 def analizar_csv(nombre_archivo, ruta_archivo, umbrales, validos):
     df = pd.read_csv(ruta_archivo)
     df["timestamp"] = pd.to_datetime(df["timestamp"])
