@@ -3,7 +3,7 @@ import os
 import sys
 from PySide6.QtWidgets import QApplication, QFileDialog, QMainWindow
 from FrontEndPrograma import Ui_MainWindow  # Cambiá por el nombre de tu archivo generado
-
+   
 class VentanaPrincipal(QMainWindow):
     def __init__(self):
         super().__init__()
