@@ -68,7 +68,7 @@ class VentanaPrincipal(QMainWindow):
             "Archivos CSV (*.csv);;Todos los archivos (*)",
         )
         if not ruta:
-            return
+            return         
 
         self.ruta_csv = ruta
         self.nombre_csv = os.path.basename(ruta)
