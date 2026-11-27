@@ -68,7 +68,7 @@ class VentanaPrincipal(QMainWindow):
             "Archivos CSV (*.csv);;Todos los archivos (*)",
         )
         if not ruta:
-            return         
+            return
 
         self.ruta_csv = ruta
         self.nombre_csv = os.path.basename(ruta)
@@ -96,8 +96,8 @@ class VentanaPrincipal(QMainWindow):
         self.ui.combo_enlace.clear()
         for enlace in enlaces:
             num = int(enlace[1:]) if enlace[1:].isdigit() else enlace
-            texto = f"{enlace} - Enlace {num}" 
-            self.ui.combo_enlace.addItem(texto, enlace) 
+            texto = f"{enlace} - Enlace {num}"
+            self.ui.combo_enlace.addItem(texto, enlace)
         self.ui.combo_enlace.blockSignals(False)
 
         # Cargar el reporte en el cuadro INFORME con viñetas
