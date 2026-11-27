@@ -96,9 +96,8 @@ class VentanaPrincipal(QMainWindow):
         self.ui.combo_enlace.clear()
         for enlace in enlaces:
             num = int(enlace[1:]) if enlace[1:].isdigit() else enlace
-            texto = f"{enlace} - Enlace {num}"  # Ej: "E01 - Enlace 1"
-            # Si preferís "EN1 - Enlace 1", usá: texto = f"EN{num} - Enlace {num}"
-            self.ui.combo_enlace.addItem(texto, enlace)  # Muestra texto, guarda "E01"
+            texto = f"{enlace} - Enlace {num}" 
+            self.ui.combo_enlace.addItem(texto, enlace) 
         self.ui.combo_enlace.blockSignals(False)
 
         # Cargar el reporte en el cuadro INFORME con viñetas
