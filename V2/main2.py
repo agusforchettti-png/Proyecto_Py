@@ -6,7 +6,7 @@ def analizar_csv(nombre_archivo, ruta_archivo, umbral_potencia, umbral_snr, umbr
 
     enlaces = sorted(df["enlace"].astype(str).unique().tolist())
 
-    problemas = []
+    problemas = []     
     for enlace, grupo in df.groupby("enlace"):
         min_pot = grupo["potencia_dbm"].min()
         min_snr = grupo["snr_db"].min()
